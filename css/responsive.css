@@ -1,3 +1,6 @@
+
+
+
 /* mobile responsiveness design */
 @media screen and (max-width: 990px) {
   .contact_us {
@@ -10,23 +13,32 @@
     margin-bottom: 30px;
   }
 }
+
+
+
 @media screen and (max-width: 1130px) {
   .menu-btn {
     display: block;
     right: 16px;
   }
 
+
+
   .navbar {
     padding: 45px;
   }
 
-  .arrow{
+  /* .arrow{
     width: 15vmin;
     height: 15vmin;
     left: 84%;
     top: 91%;
-  }
+  } */
 
+  .about-text {
+    width: 100%;
+    padding: 0 20px;
+  }
 
   .content-col h1{
     text-align: center
@@ -76,7 +88,12 @@
 		width: 90vw;
 		height: 100%;
 	}
-	
+	    .arrow {
+        width: 7vmin;
+        height: 7vmin;
+        left: 92%;
+        top: 91%;
+    }
 	#about-quad {
 		display: none;
 	}
@@ -100,7 +117,12 @@
   .explore-content {
     width: 100%;
   }
-
+    .arrow {
+        width: 10vmin;
+        height: 10vmin;
+        left: 85%;
+        top: 91%;
+    }
   /*tours*/
   .tours {
     width: 100%;
@@ -163,6 +185,12 @@
   .c_boxx a p {
     font-size: 16px;
   }
+  .arrow {
+        width: 15vmin;
+        height: 15vmin;
+        left: 85%;
+        top: 91%;
+    }
 }
 
 @media (max-width: 850px) {
