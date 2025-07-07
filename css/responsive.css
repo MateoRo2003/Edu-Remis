@@ -20,6 +20,14 @@
     padding: 45px;
   }
 
+  .arrow{
+    width: 15vmin;
+    height: 15vmin;
+    left: 84%;
+    top: 91%;
+  }
+
+
   .content-col h1{
     text-align: center
   }
