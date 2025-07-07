@@ -1,0 +1,1137 @@
+/* Google fonts */
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;800&family=Parisienne&family=Roboto&family=Teko:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap");
+
+.image-col {
+    /* Estilos existentes */
+    width: 50%; /* Ajusta según sea necesario */
+    overflow: hidden; /* Importante: oculta el contenido que se desborda */
+    margin-top: 7rem;
+}
+
+.carousel-row {
+    display: flex;
+    margin-bottom: 10px; /* Espacio entre filas */
+    width: max-content; /* El ancho se ajusta al contenido interno */
+    /* Otros estilos que desees aplicar a las filas */
+      animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+section {
+  scroll-margin-top: 150px; /* Ajustá este valor al alto real de tu navbar */
+}
+
+
+.top-carousel {
+    animation: scroll-left 30s linear infinite; /* Ejemplo de animación */
+}
+
+.bottom-carousel {
+    animation: scroll-right 35s linear infinite; /* Ejemplo de animación con diferente dirección y duración */
+}
+
+.carousel-item {
+    flex-shrink: 0; /* Evita que los elementos se encojan */
+    margin-right: 10px; /* Espacio entre imágenes */
+
+    /* ----- Estilos para controlar el tamaño de la imagen ----- */
+    width: 250px; /* Establece un ancho fijo para cada ítem del carrusel */
+    height: 180px; /* Establece un alto fijo para cada ítem del carrusel */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que se desborde del item */
+    display: flex; /* Para centrar la imagen dentro del item si es necesario */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    /* -------------------------------------------------------- */
+}
+
+.carousel-item img {
+    display: block;
+    width: 100%; /* La imagen ocupará el 100% del ancho del carousel-item */
+    height: 100%; /* La imagen ocupará el 100% del alto del carousel-item */
+    object-fit: cover; /* Recorta la imagen para que cubra todo el espacio sin distorsionarse */
+    /* Otras opciones para object-fit:
+       - 'contain': Escala la imagen para que quepa completamente dentro del contenedor, manteniendo su relación de aspecto. Podría dejar espacios vacíos.
+       - 'fill': Escala la imagen para que llene el contenedor, sin mantener la relación de aspecto (podría distorsionarse).
+       - 'scale-down': Elige entre 'none' o 'contain' para encontrar el tamaño más pequeño del objeto concreto.
+    */
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); } /* Desplaza hacia la izquierda */
+}
+
+@keyframes scroll-right {
+    0% { transform: translateX(-50%); } /* Empieza desde la derecha (asumiendo suficientes imágenes) */
+    100% { transform: translateX(0%); } /* Desplaza hacia la derecha */
+}
+
+
+/* Root element (aka html) */
+:root {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  /* CSS Variables */
+  /* Fonts */
+  --ff-parisienne: "Parisienne", cursive;
+  --ff-montserrat: "Montserrat", sans-serif;
+  --ff-lora: "Lora", serif;
+  --ff-roboto: "Roboto", sans-serif;
+  --ff-rubik-dirt: "Rubik Dirt", cursive;
+  --fs-paragraphs: calc(0.8rem + 0.35vw);
+  --fs-links-btns: calc(0.65rem + 0.5vw);
+}
+
+/* Global */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+span {
+  color: #7c7c7c;
+  padding: 0px 40px;
+}
+
+/* .active {
+  color: #00b894;
+  border-radius: 20px;
+  background: whitesmoke;
+  font-weight: bold;
+} */
+
+body,
+html {
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 98%;
+  max-width: 91rem;
+  margin: 0 auto;
+}
+
+/*scrollbar*/
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: gray;
+  border-radius: 10px;
+}
+
+/* Navbar */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: saturate(180%) blur(10px);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 5px;
+  z-index: 10;
+  color: whitesmoke;
+}
+
+.logo {
+  font-family: var(--ff-rubik-dirt);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  padding: 0 1.2rem;
+  font-weight: 300;
+  color: rgb(254, 252, 252); 
+  
+  
+}
+
+
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links li {
+  font-family: var(--ff-montserrat);
+  margin: 0px 15px;
+}
+
+.nav-links li a {
+  color: white;
+  cursor: pointer;
+}
+
+.cir_border {
+  padding: 6px 20px;
+  font-weight: bold;
+  border: 2px hidden whitesmoke;
+  border-radius: 20px;
+  margin: 0px -10px;
+}
+
+header {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../img/prueba2.jpeg");
+  background-position: bottom;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+.header-content {
+  font-family: var(--ff-lora);
+  letter-spacing: 0.5rem;
+  color: whitesmoke;
+  text-align: center;
+  z-index: 1;
+  padding: 4rem;
+  margin-bottom: 150px;
+}
+
+.header-content a {
+  letter-spacing: 0.1rem;
+}
+
+.header-content h2 {
+  font-size: 4vmin;
+}
+
+.line {
+  width: 150px;
+  height: 4px;
+  background: #00b894;
+  margin: 10px auto;
+  border-radius: 5px;
+}
+
+.header-content h1 {
+  font-size: 7vmin;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.ctn {
+  font-family: var(--ff-montserrat);
+  font-size: var(--fs-links-btns);
+  font-weight: 700;
+  padding: 13px 50px;
+  background: #00b894;
+  border-radius: 30px;
+  color: whitesmoke;
+}
+
+.menu-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Events */
+section {
+    width: 80%;
+    margin: 80px auto;
+}
+
+.title {
+    text-align: center;
+    font-family: var(--ff-montserrat);
+    font-size: 4vmin;
+}
+
+.title2 {
+    text-align: center;
+    font-family: var(--ff-montserrat);
+    font-size: 4vmin;
+    margin-top: 14rem;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center; /* Puede que quieras cambiar esto a 'flex-start' o 'stretch' si las cards ya tienen su propio control de altura */
+}
+
+/* Mantener el card height si es para el contenedor, pero ajustaremos la imagen dentro */
+.card {
+    cursor: pointer;
+    height: 400px; /* Si este es el alto deseado para toda la tarjeta, es un buen punto de partida */
+    display: flex; /* Añadir display flex para controlar mejor el contenido */
+    flex-direction: column; /* Colocar los elementos en columna dentro de la tarjeta */
+    /* Posiblemente añadir align-items: center; si el contenido de la tarjeta debe centrarse */
+}
+
+.row .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    height: 480px; /* Este alto lo tienes en .col. Asegúrate que no entre en conflicto con .card height. Si .col es la card, considera combinar los estilos. */
+    /* Si .col ES la tarjeta, y .card es un estilo adicional, entonces la altura se definirá aquí */
+    /* Si .card está dentro de .col, entonces .card.height es el que importa */
+}
+
+
+
+/* --- CAMBIOS CLAVE AQUÍ --- */
+.row .col img {
+    width: 100%; /* La imagen ocupará el 100% del ancho disponible de su contenedor .col */
+    height: 250px; /* <--- DEFINE UN ALTO FIJO PARA TODAS LAS IMÁGENES. AJUSTA ESTE VALOR. */
+    object-fit: cover; /* <--- IMPORANTE: Recorta la imagen para que cubra el espacio sin distorsionarse */
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    margin-bottom: 20px; /* Añade un margen inferior para separar la imagen del título/texto */
+    /* Si las imágenes tienen un ancho fijo y el contenedor .col también, puedes usar: */
+    /* width: 300px; */ /* Ejemplo de ancho fijo, si lo prefieres así */
+}
+/* --- FIN CAMBIOS CLAVE --- */
+
+
+.events .row {
+    margin-top: 50px;
+}
+
+.col > h4 {
+    font-size: calc(1rem + 0.5vw);
+    margin: 20px auto; /* Esto puede ser 20px 0px si no quieres margen lateral */
+    font-family: var(--ff-lora);
+}
+
+.col p {
+    color: #7c7c7c;
+    padding: 0px 40px; /* Considera cambiar esto a padding-inline: 40px; */
+    font-size: var(--fs-paragraphs);
+    font-family: var(--ff-roboto);
+}
+
+.col > p {
+    color: #7c7c7c;
+    padding: 0; /* Este padding 0 sobrescribe el de .col p si es el mismo elemento. Ten cuidado con la especificidad. */
+    line-height: 1.5;
+    text-align: center;
+    max-width: 35ch;
+}
+.button-center-container {
+    display: flex; /* Usa flexbox para alinear el contenido */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    margin-top: 30px; /* Añade un margen superior para separarlo de las tarjetas */
+    margin-bottom: 20px; /* Añade un margen inferior si es necesario */
+}
+
+/* .events .ctn {
+    margin-top: 30px;
+} */
+
+/* explore */
+.explore {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../img/cataratas-del-iguazu.jpeg);
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.explore-content {
+  font-family: var(--ff-lora);
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 8rem;
+  position: relative;
+  z-index: 1;
+  padding: 2rem 17px;
+  margin: auto;
+}
+
+.explore-content::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(2.5px);
+  border-radius: 0.5rem;
+}
+
+.explore-content h1 {
+  /* width: 100%; */
+  font-size: calc(2.2rem + 1vw);
+  letter-spacing: 0.3rem;
+  margin: auto;
+}
+
+.explore-content .line {
+  margin-bottom: 50px;
+}
+
+.explore-content p {
+  color: rgb(221, 221, 221);
+  max-width: 65ch;
+  line-height: 1.5;
+  text-align: center;
+  padding: 0px 35px;
+}
+
+.explore-content .ctn {
+  margin: 17px auto;
+  padding: 12px 27px;
+}
+
+/* tours */
+.image-gallery {
+  display: grid;
+  gap: 1.8rem 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  padding: 1rem;
+}
+
+.tours .row {
+  gap: 4rem;
+}
+
+.content-col {
+  position: relative;
+}
+
+.content-col h1 {
+  font-size: calc(2.2rem + 1vw);
+  font-family: var(--ff-lora);
+  max-width: 15.5ch;
+  text-align: left;
+}
+
+.content-col .line {
+  margin-left: 0;
+}
+
+.content-col p {
+  padding: 0;
+  margin: 30px 0;
+  width: 100%;
+  text-align: left;
+  max-width: 40ch;
+}
+
+.content-col .ctn {
+text-align: center;
+}
+
+
+#about {
+  width: 100%;
+}
+
+#about_us {
+  background: url("https://awe365.com/wp-content/uploads/2013/07/adventure-sports-hang-gliding-flickrcc-image-by-Steve-Slater.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  padding: 4rem 0;
+}
+
+.about-container {
+ display: grid;
+  grid-template-columns: 1fr 1fr; /* 50% - 50% */
+  gap: 4rem;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.about-text {
+  background-color: black;
+  padding: 2rem;
+  border-radius: 15px;
+
+  font-family: var(--ff-montserrat);
+  max-width: 500px;
+   box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.about-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+  color: #7c7c7c;;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+  .about-container {
+grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .about-text {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .cards {
+    height: 300px;
+  }
+    .containerx {
+    height: 280px;
+  }
+  .cardt {
+    width: 90%;
+    left: 5%;
+
+  }
+}
+
+body.dark .about-text {
+  background-color: #fdfdfd;
+}
+
+body.dark .about-text h2 {
+  color: black;
+}
+
+
+/*services */
+#services {
+  width: 90%;
+  max-width: 1000px;
+  margin: 80px auto;
+  font-family: var(--ff-montserrat);
+}
+
+#services .title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.services-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.services-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.service-card {
+   background-color: #111; /* fondo claro por defecto */
+  border-radius: 12px;
+  padding: 1.5rem 1.2rem;
+  flex: 1 1 calc(33.333% - 1rem); /* 3 cards por fila con gap */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 380px;
+    box-shadow: 0 0 12px rgba(0, 184, 148, 0.3); /* reemplazo verde */
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+    box-shadow: 0 0 12px rgba(0, 184, 148, 0.3); /* reemplazo verde */
+}
+
+.service-card i {
+  color: #00b894;
+  font-size: 3.5rem;
+  margin-bottom: 1.1rem;
+}
+
+.service-card h4 {
+  font-family: var(--ff-lora);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0.8rem;
+}
+
+.service-card p {
+  font-family: var(--ff-roboto);
+  color: #b0b0b0;
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+  .services-row {
+    justify-content: center;
+  }
+
+  .service-card {
+    flex: 1 1 45%; /* 2 cards por fila */
+    min-height: auto;
+    max-width: 400px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .service-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-height: auto;
+  }
+}
+
+
+/* Contacto limpio y moderno */
+.contact_us {
+  margin-top: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  font-family: var(--ff-roboto);
+}
+
+form.cform {
+  flex: 1 1 48%;
+  background-color: #111;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.05);
+}
+
+body.dark form.cform {
+  background-color: #222;
+}
+
+
+form.cform h2 {
+  font-family: var(--ff-montserrat);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #00b894;
+}
+
+.underline {
+  width: 50px;
+  height: 4px;
+  background: #00b894;
+  margin-bottom: 1.5rem;
+  border-radius: 3px;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+  padding: 12px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: var(--ff-roboto);
+  background-color: white;
+  color: #111;
+}
+
+body.dark .input-group input,
+body.dark .input-group select,
+body.dark .input-group textarea {
+  background-color: white;
+  color: black;
+  border-color: #555;
+}
+
+.input-group select option {
+  color: black;
+}
+
+input[type="submit"] {
+  background-color: #00b894;
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-family: var(--ff-montserrat);
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: white;
+  color: #00b894;
+  border: 2px solid #00b894;
+  cursor: pointer;
+}
+
+.cbox {
+  flex: 1 1 45%;
+  padding: 1rem;
+  background-color: #111;
+  border-radius: 10px;
+
+}
+
+body.dark .cbox {
+  background-color: white;
+}
+
+.cbox-message {
+  font-size: 1.2em;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.cbox-line {
+  width: 40px;
+  height: 3px;
+  background-color: #00b894;
+  margin-bottom: 1.5rem;
+}
+
+.c_boxx a {
+  display: flex;
+  align-items: center;
+  padding: 0.8em 1em;
+  margin-bottom: 1.2em;
+  background-color: #00b894;
+  color: white;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.c_boxx a:hover {
+  background-color: white;
+  color: #00b894;
+  border: 1px solid #00b894;
+}
+
+.c_boxx i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+@media (max-width: 768px) {
+  .contact_us {
+    flex-direction: column;
+  }
+
+  form.cform,
+  .cbox {
+    flex: 1 1 100%;
+    margin: 0 auto;
+  }
+}
+
+/* Footer */
+.footer {
+  width: 100%;
+  background: #222;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: var(--ff-montserrat);
+  color: whitesmoke;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-family: var(--ff-rubik-dirt);
+  letter-spacing: 1px;
+  color: #00b894;
+}
+
+.footer span {
+  display: block;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.social li {
+  list-style: none;
+}
+
+.social a {
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 8px 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social a:hover {
+  background-color: #00b894;
+  transform: scale(1.1);
+}
+
+.social i {
+  color: whitesmoke;
+}
+
+.developer-credit {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+.developer-credit strong {
+  color: #00b894;
+}
+
+/* animations */
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+.cir_border:hover{
+    color: #00b894
+}
+
+
+.active {
+  border: 2px solid whitesmoke;
+  border-radius: 20px;
+  color: #00b894;
+  cursor: pointer;
+}
+
+.ctn:hover {
+  background: whitesmoke;
+  color: #00b894;
+  box-shadow: 2px 2px 5px #00000056;
+  cursor: pointer;
+}
+
+.nav-links .ctn:hover a {
+  color: #00b894;
+}
+
+body {
+ background-color: black;
+  color: white;
+}
+
+body.dark .service-card {
+  background-color: #fdfdfd; /* fondo claro por defecto */;
+  color: white;
+    box-shadow: 0 0 12px rgba(0, 184, 148, 0.3); /* reemplazo verde */
+}
+
+body.dark .service-card p {
+  color: #b0b0b0;
+}
+
+body.dark .service-card h4 {
+  color: black;
+}
+
+body.dark{
+  background-color: white;
+  color: black;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 48px;
+  height: 22px;
+  background-color:#111;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 18px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.fa-moon-o {
+  color: white;
+}
+
+.fa-sun-o {
+  color: yellow;
+}
+
+.color{
+  color:white;
+}
+
+/* scroll button */
+
+.arrow {
+  position: fixed; 
+  z-index: 99;
+  cursor: pointer; 
+  padding: 15px; 
+	width: 8vmin;
+	height: 8vmin;
+	box-sizing: border-box;
+	left: 95%;
+	top: 86%;
+	transform: rotate(-45deg);
+  
+	
+	&::before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		border-width: .8vmin .8vmin 0 0;
+		border-style: solid;
+		border-color:  #fff;
+		transition: .2s ease;
+		display: block;
+		transform-origin: 100% 0;
+	}
+
+	
+	&:after {
+		content: '';
+		float: left;
+		position: relative;
+		top: -86%;
+		width: 100%;
+		height: 100%;
+		border-width: 0 .8vmin 0 0;
+		border-style: solid;
+		border-color:  #fff;
+		transform-origin: 100% 0;
+		transition:.2s ease;
+	}
+	
+	&:hover::after {
+		transform: rotate(45deg);
+		border-color:#00b894;
+		height: 120%;
+	}
+	&:hover::before {
+		border-color:#00b894;
+		transform: scale(.8);
+		
+	}
+	
+}
+
+/* Dark Mode Styles Scroll Button  */
+.dark .arrow {
+  &::before {
+    border-color: black; 
+  }
+
+  &:after {
+    border-color: black;
+  }
+
+  &:hover::after {
+    border-color: #00b894;
+  }
+
+  &:hover::before {
+    border-color: #00b894;
+  }
+}
+
+#quote {
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(45deg, #00b894, #d4f1e4, #14532d);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 8s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+
+
+/* carousel */
+
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
+
+
+input[type=radio] {
+  display: none;
+}
+
+.cardt {
+ position: absolute;
+  width: 90%;
+  height: 100%;
+  left: 5%;
+  top: 0;
+  margin: auto;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.containerx {
+  width: 100%;
+  height: 300px; /* menos altura */
+  transform-style: preserve-3d;
+  overflow: hidden; /* importante para que no sobresalgan las imágenes */
+}
+
+.cards {
+  position: relative;
+  width: 100%;
+  height: 100%; /* fijo o relativo, pero NO vh */
+  max-width: 100%;
+}
+
+.cards label img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+  background-color: #000; /* opcional, para que no haya espacios blancos */
+}
+
+#item-1:checked ~ .cards #col-img-3, #item-2:checked ~ .cards #col-img-1, #item-3:checked ~ .cards #col-img-2 {
+  transform: translatex(-40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #col-img-2, #item-2:checked ~ .cards #col-img-3, #item-3:checked ~ .cards #col-img-1 {
+  transform: translatex(40%) scale(.8);
+  opacity: .4;
+  z-index: 0;
+}
+
+#item-1:checked ~ .cards #col-img-1, #item-2:checked ~ .cards #col-img-2, #item-3:checked ~ .cards #col-img-3 {
+  transform: translatex(0) scale(1);
+  opacity: 1;
+  z-index: 1;
+  
+  img {
+    box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
+  }
+}
+
+#item-2:checked ~ .player #test {
+  transform: translateY(0);
+}
+
+#item-2:checked ~ .player #test  {
+  transform: translateY(-40px);
+}
+
+#item-3:checked ~ .player #test  {
+  transform: translateY(-80px);
+}
+
+/* end */
