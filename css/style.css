@@ -236,6 +236,8 @@ header {
   border-radius: 5px;
 }
 
+
+
 .header-content h1 {
   font-size: 7vmin;
   margin-top: 50px;
@@ -438,12 +440,12 @@ section {
   font-size: calc(2.2rem + 1vw);
   font-family: var(--ff-lora);
   max-width: 15.5ch;
-  text-align: left;
+  text-align: center;
 }
 
-.content-col .line {
+/* .content-col .line {
   margin-left: 0;
-}
+} */
 
 .content-col p {
   padding: 0;
@@ -643,6 +645,7 @@ form.cform {
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.05);
+  height: 570px;
 }
 
 body.dark form.cform {
