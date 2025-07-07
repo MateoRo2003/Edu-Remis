@@ -18,7 +18,8 @@
     <!-- CSS Font Awesome (manteniendo los que tenías) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- CSS propios -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
@@ -234,6 +235,13 @@
         </div>
     </div>
 </section>
+
+
+
+
+
+
+
 <section id="services">
   <div class="title">
     <h1 class="font-color">SERVICIOS QUE OFREZCO</h1>
@@ -289,30 +297,32 @@
 
 
 <!-- Contacto -->
-<!-- Contacto -->
+<!-- Agregá esto dentro del <head> o justo antes de cerrar <body> -->
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
 <section id="contact">
   <div class="title">
-    <h1 class="font-color">CONTACTO</h1>
+    <h2 class="font-color">CONTACTO</h2>
     <div class="line"></div>
   </div>
 
   <div class="contact_us">
-    <form class="cform" action="https://formsubmit.co/mateorojasarce2003@gmail.com" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://edurodrigueztraslados.com.ar/gracias.html">
-
+    <form id="testimonyForm" class="cform">
       <div class="crow-message">
         <h2>Dejanos tu testimonio</h2>
         <div class="underline"></div>
       </div>
 
       <div class="input-group">
-        <input type="text" name="name" placeholder="Tu nombre" required />
-        <input type="email" name="email" placeholder="Tu correo electrónico" required />
+        <input type="text" name="name" id="name" placeholder="Tu nombre" required />
+        <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required />
       </div>
 
       <div class="input-group">
-        <select name="country" required>
+        <select name="country" id="country" required>
           <option value="" disabled selected>Seleccioná tu país</option>
           <option value="Argentina">Argentina</option>
           <option value="Brasil">Brasil</option>
@@ -339,7 +349,7 @@
       </div>
 
       <div class="input-group">
-        <textarea name="remarks" placeholder="Tu mensaje..." rows="5" required></textarea>
+        <textarea name="remarks" id="remarks" placeholder="Tu mensaje..." rows="5" required></textarea>
       </div>
 
       <div class="button-center-container">
@@ -353,30 +363,158 @@
 
       <div class="c_boxx">
         <a href="mailto:ede29@hotmail.com">
-            <i class="fa fa-envelope"></i> ede29@hotmail.com
+          <i class="fa fa-envelope"></i> ede29@hotmail.com
         </a>
-        </div>
+      </div>
 
-        <div class="c_boxx">
+      <div class="c_boxx">
         <a href="tel:+543757323290">
-            <i class="fa fa-phone"></i> (+54) 9 3757-32-3290
+          <i class="fa fa-phone"></i> (+54) 9 3757-32-3290
         </a>
-        </div>
+      </div>
 
-        <div class="c_boxx">
+      <div class="c_boxx">
         <a href="https://wa.me/5493757323290?text=Hola%20Eduardo%2C%20estoy%20interesado%20en%20realizar%20una%20consulta%20o%20reserva%20para%20un%20traslado." target="_blank">
-            <i class="fa fa-whatsapp"></i> WhatsApp directo
+          <i class="fa fa-whatsapp"></i> WhatsApp directo
         </a>
-        </div>
+      </div>
 
-        <div class="c_boxx">
+      <div class="c_boxx">
         <a href="#">
-            <i class="fa fa-map-marker"></i> Puerto Iguazú, Misiones
+          <i class="fa fa-map-marker"></i> Puerto Iguazú, Misiones
         </a>
-        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<section id="testimonios" style="margin-top: 3rem;">
+  <div class="title">
+    <h2 class="font-color">TESTIMONIOS</h2>
+    <div class="line"></div>
+  </div>
+  <div id="testimoniosList" style="max-width: 800px; margin: auto; padding: 1rem; color: #b0b0b0;"></div>
+</section>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyCC5yuFLgCEeaWh3nY2KdFY4P-S8DBStgA",
+    authDomain: "edurodrigueztestimonios.firebaseapp.com",
+    projectId: "edurodrigueztestimonios",
+    storageBucket: "edurodrigueztestimonios.firebasestorage.app",
+    messagingSenderId: "159187507731",
+    appId: "G-MWDE7Q6F95",
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  const form = document.getElementById('testimonyForm');
+  const testimoniosList = document.getElementById('testimoniosList');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        country: form.country.value,
+        remarks: form.remarks.value.trim(),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      try {
+        await db.collection('testimonios').add(data);
+
+        // Mostrar modal Swal.fire en lugar de alert
+        Swal.fire({
+          title: '¡Gracias!',
+          html: '<p style="margin-top:10px;">Tu testimonio fue enviado con éxito.</p>',
+          iconHtml: `
+            <svg viewBox="0 0 130.2 130.2" style="width:70px;height:70px">
+              <circle fill="none" stroke="#00b894" stroke-width="6" cx="65.1" cy="65.1" r="62.1"/>
+              <polyline fill="none" stroke="#00b894" stroke-width="6" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+            </svg>`,
+          showConfirmButton: false,
+          timer: 3000,
+          background: '#1c1c1c',
+          color: '#ffffff'
+        });
+
+
+
+        form.reset();
+        loadTestimonios();
+      } catch (error) {
+        Swal.fire({
+          title: 'Error',
+          text: 'No se pudo enviar el testimonio. Intentá de nuevo.',
+          icon: 'error',
+          confirmButtonColor: '#d63031',
+          background: '#1c1c1c',
+          color: '#ffffff'
+        });
+        console.error(error);
+      }
+    });
+  }
+
+  async function loadTestimonios() {
+    testimoniosList.innerHTML = 'Cargando testimonios...';
+
+    try {
+      const snapshot = await db.collection('testimonios').orderBy('timestamp', 'desc').get();
+
+      if (snapshot.empty) {
+        testimoniosList.innerHTML = '<p style="color: white;">No hay testimonios aún.</p>';
+        return;
+      }
+
+      testimoniosList.innerHTML = '';
+
+      snapshot.forEach(doc => {
+        const t = doc.data();
+        const div = document.createElement('div');
+
+        div.style.border = "1px solid #00b894";
+        div.style.borderRadius = "15px";
+        div.style.padding = "1.5rem";
+        div.style.marginBottom = "1.5rem";
+        div.style.backgroundColor = "#1c1c1c";
+        div.style.color = "#ffffff";
+        div.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.4)";
+        div.style.textAlign = "center";
+        div.style.maxWidth = "600px";
+        div.style.marginLeft = "auto";
+        div.style.marginRight = "auto";
+        div.style.transition = "transform 0.3s";
+        div.onmouseover = () => div.style.transform = "scale(1.02)";
+        div.onmouseout = () => div.style.transform = "scale(1)";
+
+        const nombre = document.createElement('h4');
+        nombre.textContent = `${t.name} (${t.country})`;
+        nombre.style.color = "#00b894";
+        nombre.style.marginBottom = "0.5rem";
+        nombre.style.fontSize = "1.1rem";
+
+        const texto = document.createElement('p');
+        texto.textContent = `"${t.remarks}"`;
+        texto.style.fontStyle = "italic";
+        texto.style.margin = "0";
+
+        div.appendChild(nombre);
+        div.appendChild(texto);
+        testimoniosList.appendChild(div);
+      });
+    } catch (error) {
+      testimoniosList.innerHTML = '<p style="color: white;">Error al cargar testimonios.</p>';
+      console.error(error);
+    }
+  }
+
+  loadTestimonios();
+</script>
 
 
     <!-- Volver arriba -->
@@ -441,15 +579,6 @@
 
   
 </a> -->
-
-<script>
-  document.querySelector(".cform").addEventListener("submit", function () {
-    // Espera 1 segundo y redirige, sin evitar el submit
-    setTimeout(function () {
-      window.location.href = "gracias.html";
-    }, 1000);
-  });
-</script>
 
 </body>
 </html>
