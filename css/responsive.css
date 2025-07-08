@@ -169,6 +169,14 @@
   #about_us p {
     margin: auto;
   }
+  .image-col{
+    width: 85%;
+    margin-top: 2rem;
+  }
+
+  .title2{
+    margin-top: 7rem;
+  }
 }
 @media screen and (max-width: 470px) {
   .ctn {
@@ -177,6 +185,10 @@
   .c_boxx a p {
     font-size: 17.5px;
   }
+  .img-logo{
+    display: block;
+  }
+  
 }
 @media screen and (max-width: 400px) {
   .ctn {
